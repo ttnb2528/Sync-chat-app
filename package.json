@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server/index.js",
-    "client": "npm run dev --prefix client && npm run build --prefix client",
+    "client": "npm run dev --prefix client",
     "server": "nodemon --env-file=.env server/index",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -15,7 +15,6 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.1",
     "concurrently": "^9.1.0",
     "cookie-parser": "^1.4.7",
