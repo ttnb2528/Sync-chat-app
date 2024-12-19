@@ -37,25 +37,15 @@ app.use("/api/v1/channel", channelRoutes);
 
 // ------------ Deployment ----------------
 
-// const __dirname1 = path.resolve("");
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-const staticPath = path.resolve(__dirname, ".", "dist");
-// console.log(staticPath);
+const __dirname1 = path.resolve("");
 
 if (process.env.NODE_ENV === "production") {
-  // app.use(express.static(path.join(__dirname1, ".", "dist")));
+  app.use(express.static(path.join(__dirname1, ".", "dist")));
 
-  // console.log(path.resolve(__dirname1, "client", "dist", "index.html"));
+  console.log(path.resolve(__dirname1, "client", "dist", "index.html"));
 
-  // app.get("*", (req, res) => {
-  //   res.sendFile(path.resolve(__dirname1, "client", "dist", "index.html"));
-  // });
   app.get("*", (req, res) => {
-    app.use(express.static(staticPath));
-    // const indexFile = path.join(__dirname, "dist", "index.html");
-
-    res.sendFile(path.resolve(__dirname, "dist", "index.html"));
-    // return res.sendFile(indexFile);
+    res.sendFile(path.resolve(__dirname1, "client", "dist", "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
