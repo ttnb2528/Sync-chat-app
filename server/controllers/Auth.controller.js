@@ -1,4 +1,5 @@
-import { compare } from "bcrypt";
+// import { compare } from "bcrypt";
+import bcrypt from "bcryptjs"; 
 import User from "../model/User.model.js";
 import jwt from "jsonwebtoken";
 import { renameSync, unlinkSync } from "fs";
@@ -47,7 +48,7 @@ export const login = async (req, res, next) => {
     if (!user) {
       return res.status(404).send("User not found");
     }
-    const auth = await compare(password, user.password);
+    const auth = await bcrypt.compare(password, user.password);
     if (!auth) {
       return res.status(400).send("Password incorrect");
     }
