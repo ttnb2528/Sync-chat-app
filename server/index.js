@@ -40,7 +40,7 @@ app.use("/api/v1/channel", channelRoutes);
 // const __dirname1 = path.resolve("");
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const staticPath = path.resolve(__dirname, ".", "dist");
-console.log(staticPath);
+// console.log(staticPath);
 
 if (process.env.NODE_ENV === "production") {
   // app.use(express.static(path.join(__dirname1, ".", "dist")));
@@ -52,8 +52,10 @@ if (process.env.NODE_ENV === "production") {
   // });
   app.get("*", (req, res) => {
     app.use(express.static(staticPath));
-    const indexFile = path.join(__dirname, "dist", "index.html");
-    return res.sendFile(indexFile);
+    // const indexFile = path.join(__dirname, "dist", "index.html");
+
+    res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+    // return res.sendFile(indexFile);
   });
 } else {
   app.get("/", (req, res) => {
