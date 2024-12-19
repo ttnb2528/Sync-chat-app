@@ -40,7 +40,15 @@ app.use("/api/v1/channel", channelRoutes);
 const __dirname1 = path.resolve("");
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname1, ".", "dist")));
+  app.use(
+    express.static(path.join(__dirname1, ".", "dist"), {
+      setHeaders: (res, path) => {
+        if (path.endsWith(".js")) {
+          res.setHeader("Content-Type", "application/javascript");
+        }
+      },
+    })
+  );
 
   console.log(path.resolve(__dirname1, "client", "dist", "index.html"));
 
