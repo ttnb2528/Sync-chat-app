@@ -40,20 +40,12 @@ app.use("/api/v1/channel", channelRoutes);
 const __dirname1 = path.resolve("");
 
 if (process.env.NODE_ENV === "production") {
-  app.use(
-    express.static(path.join(__dirname1, ".", "dist"), {
-      setHeaders: (res, path) => {
-        if (path.endsWith(".js")) {
-          res.setHeader("Content-Type", "application/javascript");
-        }
-      },
-    })
-  );
+  app.use(express.static(path.join(__dirname1, "../client/dist")));
 
-  console.log(path.resolve(__dirname1, "client", "dist", "index.html"));
+  console.log(path.join(__dirname1, "../client", "dist", "index.html"));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname1, "client", "dist", "index.html"));
+    res.sendFile(path.resolve(__dirname1, "../client", "dist", "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
