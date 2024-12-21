@@ -15,7 +15,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (userInfo) {
-      socket.current = io(HOST, {
+      socket.current = io(import.meta.env.NODE_ENV === "development" ? HOST : "/", {
         withCredentials: true,
         query: { userId: userInfo.id },
       });

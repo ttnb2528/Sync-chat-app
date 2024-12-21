@@ -3,6 +3,8 @@ import Message from "./model/Message.model.js";
 import Channel from "./model/Channel.model.js";
 
 const setupSocket = (server) => {
+  // console.log("Setting up socket.io server...", process.env.ORIGIN);
+
   const io = new SocketIOServer(server, {
     cors: {
       origin: process.env.ORIGIN,
