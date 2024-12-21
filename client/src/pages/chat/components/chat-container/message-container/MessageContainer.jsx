@@ -140,7 +140,7 @@ const MessageContainer = () => {
             message.sender !== selectedChatData._id
               ? "bg-[#8417ff]/5 text-[#8417ff]/90 border-[#8417ff]/50"
               : "bg-[##2a2b33]/5 text-[##2a2b33]/80 border-[##2a2b33]/20"
-          } border inline-block p-4 rounded my-1 max-w-[50%] break-words ml-9`}
+          } border inline-block p-4 rounded my-1 max-w-[50%] break-words`}
         >
           {message.content}
         </div>
