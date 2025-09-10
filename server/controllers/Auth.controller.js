@@ -19,7 +19,11 @@ export const signup = async (req, res, next) => {
     if (!email || !password) {
       return res.status(400).send("Please provide email and password");
     }
-    const user = await User.create({ email, password });
+    
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const user = await User.create({ email, password: hashedPassword });
     res.cookie("jwt", createToken(email, user.id), {
       maxAge,
       secure: true,

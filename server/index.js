@@ -24,7 +24,7 @@ app.use(
   })
 );
 
-console.log(process.env.ORIGIN);
+console.log(process.env.ORIGIN);  
 
 
 app.use("/uploads/profiles", express.static("uploads/profiles"));
